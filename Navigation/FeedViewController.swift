@@ -1,5 +1,5 @@
 //
-//  ViewController.swift
+//  FeedViewController.swift
 //  Navigation
 //
 //  Created by Владлен Морозов on 27.08.2021.
@@ -7,14 +7,14 @@
 
 import UIKit
 
-class ViewController: UIViewController {
+class FeedViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        view.backgroundColor = .green
+
+    
     }
+    
 
 
 }
-

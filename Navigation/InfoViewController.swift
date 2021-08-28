@@ -23,9 +23,24 @@ class InfoViewController: UIViewController {
     }
     
     @objc func tap() {
-        let vc = PostViewController()
-        navigationController?.pushViewController(vc, animated: true)
+        let alertVC = UIAlertController(title: "Error", message: "Something goes wrong", preferredStyle: .alert)
+        let cancelAction = UIAlertAction(title: "Cancel", style: .cancel) {
+            _ in print("Cancel")
+        }
+        alertVC.addAction(cancelAction)
+        
+        let okAction = UIAlertAction(title: "OK", style: .default) {
+            _ in print("OK")
+        }
+        alertVC.addAction(okAction)
+        
+        present(alertVC, animated: true, completion: nil)
     }
     
+    
+       
+        
+      
+    }
 
-}
+

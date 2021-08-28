@@ -26,7 +26,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         let profileVC = ProfileViewController()
         profileVC.view.backgroundColor = .red
-        profileVC.tabBarItem = UITabBarItem(title: "Profile", image: #imageLiteral(resourceName: "Profile"), tag: 1) 
+        profileVC.tabBarItem = UITabBarItem(title: "Profile", image: #imageLiteral(resourceName: "Profile"), tag: 1)
+        
        
         let feedNavVC = UINavigationController(rootViewController: feedVC)
         let profileNavVC = UINavigationController(rootViewController: profileVC)
@@ -35,6 +36,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
 
         window?.rootViewController = tabBarController
+        
+        
         
        
         

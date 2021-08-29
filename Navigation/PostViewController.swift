@@ -9,12 +9,11 @@ import UIKit
 
 class PostViewController: UIViewController {
 
-    var postName = "FirstPost"
-
+    var firstPost = Post(title: "Feed")
     override func viewDidLoad() {
         super.viewDidLoad()
         self.view.backgroundColor = .magenta
-        self.title = postName
+        self.title = firstPost.title
        
         let button = UIButton(frame: CGRect(x: 100, y: 300, width: 200, height: 50))
         button.center = self.view.center

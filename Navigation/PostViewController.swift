@@ -15,7 +15,15 @@ class PostViewController: UIViewController {
         super.viewDidLoad()
         self.view.backgroundColor = .magenta
         self.title = postName
-        self.navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Info", style: .plain, target: self, action: #selector(tap))
+       
+        let button = UIButton(frame: CGRect(x: 100, y: 300, width: 200, height: 50))
+        button.center = self.view.center
+            button.setTitle("Posts", for: .normal)
+            button.addTarget(self, action: #selector(tap), for: .touchUpInside)
+            button.backgroundColor = .darkGray
+            button.setTitleColor(.black, for: .normal)
+            
+            view.addSubview(button)
         
     }
 

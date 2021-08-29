@@ -14,6 +14,7 @@ class InfoViewController: UIViewController {
         self.view.backgroundColor = .orange
 
         let button = UIButton(frame: CGRect(x: 100, y: 300, width: 200, height: 50))
+        button.center = self.view.center
             button.setTitle("See the Post!", for: .normal)
             button.addTarget(self, action: #selector(tap), for: .touchUpInside)
             button.backgroundColor = .darkGray

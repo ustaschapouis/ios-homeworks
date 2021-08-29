@@ -22,11 +22,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         let feedVC = FeedViewController()
         feedVC.view.backgroundColor = .blue
-        feedVC.tabBarItem = UITabBarItem(title: "Feed", image: #imageLiteral(resourceName: "Feed"), tag: 0)
+        feedVC.tabBarItem = UITabBarItem(title: "Feed", image: UIImage(named: "Feed"), tag: 0)
         
         let profileVC = ProfileViewController()
         profileVC.view.backgroundColor = .red
-        profileVC.tabBarItem = UITabBarItem(title: "Profile", image: #imageLiteral(resourceName: "Profile"), tag: 1)
+        profileVC.tabBarItem = UITabBarItem(title: "Profile", image: UIImage(named: "Profile"), tag: 1)
         
        
         let feedNavVC = UINavigationController(rootViewController: feedVC)

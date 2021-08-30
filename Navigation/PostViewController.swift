@@ -9,15 +9,24 @@ import UIKit
 
 class PostViewController: UIViewController {
 
-    var firstPost = Post(title: "Feed")
+    private let post: Post
+    
+    init(post: Post) {
+        self.post = post
+        super.init(nibName: nil, bundle: nil)
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.view.backgroundColor = .magenta
-        self.title = firstPost.title
+        view.backgroundColor = .magenta
+        title = post.title
        
         let button = UIButton(frame: CGRect(x: 100, y: 300, width: 200, height: 50))
         button.center = self.view.center
-            button.setTitle("Posts", for: .normal)
+            button.setTitle("InfoViewController", for: .normal)
             button.addTarget(self, action: #selector(tap), for: .touchUpInside)
             button.backgroundColor = .darkGray
             button.setTitleColor(.black, for: .normal)

@@ -25,8 +25,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         feedVC.tabBarItem = UITabBarItem(title: "Feed", image: UIImage(named: "feedIcon"), tag: 0)
         
         let profileVC = ProfileViewController()
-        profileVC.view.backgroundColor = .red
-        profileVC.tabBarItem = UITabBarItem(title: "Profile", image: UIImage(named: "Profile"), tag: 1)
+        profileVC.tabBarItem = UITabBarItem(title: "Profile", image: UIImage(named: "profileIcon"), tag: 1)
         
        
         let feedNavVC = UINavigationController(rootViewController: feedVC)

@@ -12,7 +12,7 @@ class ProfileHeaderView: UIView {
        var someImageView = UIImageView()
        let avatarImage = UIImage(named: "avatar")
        let textLabel = UILabel()
-    
+       let statusField = UITextField()
        let statusLabel = UILabel()
 
    override init(frame: CGRect) {
@@ -23,5 +23,4 @@ class ProfileHeaderView: UIView {
        required init?(coder: NSCoder) {
            fatalError()
        }
-
 }

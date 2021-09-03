@@ -15,6 +15,7 @@ class FeedViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.title = "Feed"
        
         let button = UIButton(frame: CGRect(x: 100, y: 300, width: 200, height: 50))
         button.center = self.view.center

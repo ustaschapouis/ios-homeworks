@@ -68,7 +68,7 @@ class ProfileViewController: UIViewController {
         myView.fullNameLabel.translatesAutoresizingMaskIntoConstraints = false
         
     
-        myView.fullNameLabel.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
+        myView.fullNameLabel.leftAnchor.constraint(equalTo: myView.avatarImageView.rightAnchor, constant: 20).isActive = true
         myView.fullNameLabel.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 16).isActive = true
         myView.fullNameLabel.heightAnchor.constraint(equalToConstant: 50).isActive = true
         
@@ -83,7 +83,7 @@ class ProfileViewController: UIViewController {
         myView.statusTextField.translatesAutoresizingMaskIntoConstraints = false
         
         myView.statusTextField.topAnchor.constraint(equalTo: myView.statusButton.topAnchor, constant: -34).isActive = true
-        myView.statusTextField.leftAnchor.constraint(equalTo: myView.fullNameLabel.leftAnchor).isActive = true
+        myView.statusTextField.leftAnchor.constraint(equalTo: myView.avatarImageView.rightAnchor, constant: 20).isActive = true
         
         myView.statusLabel.textColor = .gray
         myView.statusLabel.font = UIFont.systemFont(ofSize: 14, weight: .regular)
@@ -92,7 +92,7 @@ class ProfileViewController: UIViewController {
         
         myView.statusLabel.translatesAutoresizingMaskIntoConstraints = false
         
-        myView.statusLabel.leftAnchor.constraint(equalTo: myView.fullNameLabel.leftAnchor).isActive = true
+        myView.statusLabel.leftAnchor.constraint(equalTo: myView.avatarImageView.rightAnchor, constant: 20).isActive = true
         myView.statusLabel.topAnchor.constraint(equalTo: myView.statusTextField.topAnchor, constant: -34).isActive = true
         
         

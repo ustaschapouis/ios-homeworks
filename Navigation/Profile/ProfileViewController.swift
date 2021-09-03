@@ -8,7 +8,8 @@
 import UIKit
 
 class ProfileViewController: UIViewController {
-   
+    
+    private var statusText: String = ""
     let myView = ProfileHeaderView()
     
       override func viewDidLoad() {
@@ -18,8 +19,12 @@ class ProfileViewController: UIViewController {
         view.backgroundColor = .lightGray
         view.addSubview(myView)
         
+        myView.translatesAutoresizingMaskIntoConstraints = false
+        
         myView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor).isActive = true
         myView.heightAnchor.constraint(equalTo: view.heightAnchor, constant: 220).isActive = true
+        myView.widthAnchor.constraint(equalTo: view.widthAnchor).isActive = true
+
         
         myView.statusButton.setTitle("Set Status", for: .normal)
         myView.statusButton.backgroundColor = .systemBlue
@@ -28,6 +33,7 @@ class ProfileViewController: UIViewController {
         myView.statusButton.layer.shadowRadius = 4
         myView.statusButton.layer.shadowColor = UIColor.black.cgColor
         myView.statusButton.layer.shadowOpacity = 0.7
+        myView.statusButton.addTarget(self, action: #selector(tap), for: .touchUpInside)
         
         view.addSubview(myView.statusButton)
         
@@ -35,7 +41,7 @@ class ProfileViewController: UIViewController {
         myView.statusButton.widthAnchor.constraint(equalTo: view.widthAnchor, constant: -32).isActive = true
         myView.statusButton.heightAnchor.constraint(equalToConstant: 50).isActive = true
         myView.statusButton.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
-        myView.statusButton.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 132).isActive = true
+        myView.statusButton.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 142).isActive = true
         
         myView.avatarImageView = UIImageView(image: myView.avatarImage)
         myView.avatarImageView.layer.borderWidth = 3
@@ -53,6 +59,52 @@ class ProfileViewController: UIViewController {
         myView.avatarImageView.widthAnchor.constraint(equalToConstant: 100).isActive = true
         myView.avatarImageView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 16).isActive = true
         
+        myView.fullNameLabel.text = "Hipster Monkey"
+        myView.fullNameLabel.textColor = UIColor.black
+        myView.fullNameLabel.font = UIFont.boldSystemFont(ofSize: 18)
+
+        view.addSubview(myView.fullNameLabel)
+        
+        myView.fullNameLabel.translatesAutoresizingMaskIntoConstraints = false
+        
+    
+        myView.fullNameLabel.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
+        myView.fullNameLabel.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 16).isActive = true
+        myView.fullNameLabel.heightAnchor.constraint(equalToConstant: 50).isActive = true
+        
+        myView.statusTextField.backgroundColor = .white
+                myView.statusTextField.placeholder = "Write your status"
+                myView.statusTextField.textColor = .black
+                myView.statusTextField.font = UIFont.systemFont(ofSize: 15, weight: .regular)
+                myView.statusTextField.addTarget(self, action: #selector(statusTextChanged(_: )), for: .editingChanged)
+        
+        view.addSubview(myView.statusTextField)
+        
+        myView.statusTextField.translatesAutoresizingMaskIntoConstraints = false
+        
+        myView.statusTextField.topAnchor.constraint(equalTo: myView.statusButton.topAnchor, constant: -34).isActive = true
+        myView.statusTextField.leftAnchor.constraint(equalTo: myView.fullNameLabel.leftAnchor).isActive = true
+        
+        myView.statusLabel.textColor = .gray
+        myView.statusLabel.font = UIFont.systemFont(ofSize: 14, weight: .regular)
+                
+        view.addSubview(myView.statusLabel)
+        
+        myView.statusLabel.translatesAutoresizingMaskIntoConstraints = false
+        
+        myView.statusLabel.leftAnchor.constraint(equalTo: myView.fullNameLabel.leftAnchor).isActive = true
+        myView.statusLabel.topAnchor.constraint(equalTo: myView.statusTextField.topAnchor, constant: -34).isActive = true
+        
+        
+        
       }
+    
+    @objc func statusTextChanged(_ textField: UITextField) {
+        statusText = myView.statusTextField.text!
+       }
+    
+    @objc func tap() {
+            myView.statusLabel.text = statusText
+        }
 
 }

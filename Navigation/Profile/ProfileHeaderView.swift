@@ -14,6 +14,7 @@ class ProfileHeaderView: UIView {
     let statusLabel = UILabel()
     let statusTextField = UITextField()
     let statusButton = UIButton()
+    let anotherButton = UIButton()
 
    override init(frame: CGRect) {
            super.init(frame: frame)

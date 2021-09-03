@@ -95,6 +95,22 @@ class ProfileViewController: UIViewController {
         myView.statusLabel.leftAnchor.constraint(equalTo: myView.avatarImageView.rightAnchor, constant: 20).isActive = true
         myView.statusLabel.topAnchor.constraint(equalTo: myView.statusTextField.topAnchor, constant: -34).isActive = true
         
+        myView.anotherButton.setTitle("Some Button", for: .normal)
+        myView.anotherButton.backgroundColor = .systemGreen
+        myView.anotherButton.layer.cornerRadius = 10
+        myView.anotherButton.layer.shadowOffset = CGSize(width: 4, height: 4)
+        myView.anotherButton.layer.shadowRadius = 4
+        myView.anotherButton.layer.shadowColor = UIColor.gray.cgColor
+        myView.anotherButton.layer.shadowOpacity = 0.9
+        myView.anotherButton.addTarget(self, action: #selector(tapSomeButton), for: .touchUpInside)
+        
+        view.addSubview(myView.anotherButton)
+        
+        myView.anotherButton.translatesAutoresizingMaskIntoConstraints = false
+        
+        myView.anotherButton.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor).isActive = true
+        myView.anotherButton.widthAnchor.constraint(equalTo: view.widthAnchor).isActive = true
+        
         
         
       }
@@ -106,5 +122,9 @@ class ProfileViewController: UIViewController {
     @objc func tap() {
             myView.statusLabel.text = statusText
         }
+    
+    @objc func tapSomeButton() {
+        print("Some button hase been pressed")
+    }
 
 }

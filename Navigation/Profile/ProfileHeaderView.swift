@@ -8,12 +8,12 @@
 import UIKit
 
 class ProfileHeaderView: UIView {
-    let button = UIButton()
-       var someImageView = UIImageView()
-       let avatarImage = UIImage(named: "avatar")
-       let textLabel = UILabel()
-       let statusField = UITextField()
-       let statusLabel = UILabel()
+    var avatarImageView = UIImageView()
+    let avatarImage = UIImage(named: "avatar")
+    let fullNameLabel = UILabel()
+    let statusLabel = UILabel()
+    let statusTextField = UITextField()
+    let statusButton = UIButton()
 
    override init(frame: CGRect) {
            super.init(frame: frame)
@@ -23,4 +23,7 @@ class ProfileHeaderView: UIView {
        required init?(coder: NSCoder) {
            fatalError()
        }
+    
 }
+
+

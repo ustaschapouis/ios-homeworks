@@ -17,8 +17,6 @@ class LoginViewController: UIViewController {
         super.viewDidLoad()
         navigationController?.navigationBar.isHidden = true
         view.backgroundColor = .white
-        contentView.isUserInteractionEnabled = true
-        scrollView.isUserInteractionEnabled = true
        
         contentView.logoImageView = UIImageView(image: contentView.logoImage)
         
@@ -54,9 +52,11 @@ class LoginViewController: UIViewController {
         contentView.loginButton.layer.borderColor = UIColor.lightGray.cgColor
         contentView.loginButton.layer.borderWidth = 0.5
         contentView.loginButton.clipsToBounds = true
+        contentView.loginButton.addTarget(self, action: #selector(tap), for: .touchUpInside)
       
         setUpView()
         setUpConstraints()
+        
     }
     
     func setUpView() {
@@ -75,6 +75,41 @@ class LoginViewController: UIViewController {
         contentView.loginButton.translatesAutoresizingMaskIntoConstraints = false
         scrollView.translatesAutoresizingMaskIntoConstraints = false
         
+    }
+    
+    override func viewDidLayoutSubviews() {
+        
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow(notification:)), name: UIResponder.keyboardWillShowNotification, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide(notification:)), name: UIResponder.keyboardWillHideNotification, object: nil)
+        
+        
+    }
+    
+    override func viewDidDisappear(_ animated: Bool) {
+        super.viewDidDisappear(animated)
+        NotificationCenter.default.removeObserver(self, name: UIResponder.keyboardWillShowNotification, object: nil)
+        NotificationCenter.default.removeObserver(self, name: UIResponder.keyboardWillHideNotification, object: nil)
+    }
+    
+@objc func keyboardWillShow(notification: NSNotification) {
+    if let keyboardSize = (notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue)?.cgRectValue {
+        scrollView.contentInset.bottom = keyboardSize.height
+        scrollView.verticalScrollIndicatorInsets = UIEdgeInsets(top: 0, left: 0, bottom: keyboardSize.height, right: 0)
+        
+    }
+    }
+    
+    @objc func keyboardWillHide(notification: NSNotification) {
+        
+    }
+    
+    @objc func tap() {
+        let profileVC = ProfileViewController()
+        navigationController?.pushViewController(profileVC, animated: true)
     }
 
     func setUpConstraints() {

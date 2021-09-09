@@ -10,6 +10,8 @@ import UIKit
 class LoginViewController: UIViewController {
     
     let scrollView = UIScrollView()
+    
+    let logPassView = LoginView()
 
     let contentView = LoginView()
     
@@ -20,30 +22,28 @@ class LoginViewController: UIViewController {
        
         contentView.logoImageView = UIImageView(image: contentView.logoImage)
         
-        contentView.userTextField.placeholder = "Email or phone"
-        contentView.userTextField.textColor = .black
-        contentView.userTextField.font = UIFont.systemFont(ofSize: 16, weight: .regular)
-        contentView.userTextField.autocapitalizationType = .none
-        contentView.userTextField.tintColor = UIColor.init(named: "color")
-        contentView.userTextField.layer.borderColor = UIColor.lightGray.cgColor
-        contentView.userTextField.layer.borderWidth = 0.5
-        contentView.userTextField.layer.cornerRadius = 10
-        contentView.userTextField.backgroundColor = .systemGray6
-        contentView.userTextField.leftView = UIView(frame: CGRect(x: 0, y: 0, width: 10, height: contentView.userTextField.frame.height))
-        contentView.userTextField.leftViewMode = .always
+        logPassView.userTextField.placeholder = "Email or phone"
+        logPassView.userTextField.textColor = .black
+        logPassView.userTextField.font = UIFont.systemFont(ofSize: 16, weight: .regular)
+        logPassView.userTextField.autocapitalizationType = .none
+        logPassView.userTextField.tintColor = UIColor.init(named: "color")
+        logPassView.userTextField.backgroundColor = .systemGray6
+        logPassView.userTextField.leftView = UIView(frame: CGRect(x: 0, y: 0, width: 10, height: contentView.userTextField.frame.height))
+        logPassView.userTextField.leftViewMode = .always
+        logPassView.userTextField.layer.borderColor = UIColor.lightGray.cgColor
+        logPassView.userTextField.layer.borderWidth = 0.5
         
-        contentView.passTextFIeld.placeholder = "Password"
-        contentView.passTextFIeld.textColor = .black
-        contentView.passTextFIeld.font = UIFont.systemFont(ofSize: 16, weight: .regular)
-        contentView.passTextFIeld.autocapitalizationType = .none
-        contentView.passTextFIeld.tintColor = UIColor.init(named: "color")
-        contentView.passTextFIeld.layer.borderColor = UIColor.lightGray.cgColor
-        contentView.passTextFIeld.layer.borderWidth = 0.5
-        contentView.passTextFIeld.layer.cornerRadius = 10
-        contentView.passTextFIeld.isSecureTextEntry = true
-        contentView.passTextFIeld.backgroundColor = .systemGray6
-        contentView.passTextFIeld.leftView = UIView(frame: CGRect(x: 0, y: 0, width: 10, height: contentView.passTextFIeld.frame.height))
-        contentView.passTextFIeld.leftViewMode = .always
+        logPassView.passTextFIeld.placeholder = "Password"
+        logPassView.passTextFIeld.textColor = .black
+        logPassView.passTextFIeld.font = UIFont.systemFont(ofSize: 16, weight: .regular)
+        logPassView.passTextFIeld.autocapitalizationType = .none
+        logPassView.passTextFIeld.tintColor = UIColor.init(named: "color")
+        logPassView.passTextFIeld.isSecureTextEntry = true
+        logPassView.passTextFIeld.backgroundColor = .systemGray6
+        logPassView.passTextFIeld.leftView = UIView(frame: CGRect(x: 0, y: 0, width: 10, height: contentView.passTextFIeld.frame.height))
+        logPassView.passTextFIeld.leftViewMode = .always
+        logPassView.passTextFIeld.layer.borderColor = UIColor.lightGray.cgColor
+        logPassView.passTextFIeld.layer.borderWidth = 0.5
         
         contentView.loginButton.setTitle("Log In", for: .normal)
         contentView.loginButton.setBackgroundImage(#imageLiteral(resourceName: "blue_pixel"), for: .normal)
@@ -53,6 +53,10 @@ class LoginViewController: UIViewController {
         contentView.loginButton.layer.borderWidth = 0.5
         contentView.loginButton.clipsToBounds = true
         contentView.loginButton.addTarget(self, action: #selector(tap), for: .touchUpInside)
+        
+        logPassView.layer.borderColor = UIColor.lightGray.cgColor
+        logPassView.layer.borderWidth = 0.5
+        logPassView.layer.cornerRadius = 10
       
         setUpView()
         setUpConstraints()
@@ -65,8 +69,9 @@ class LoginViewController: UIViewController {
         scrollView.addSubview(contentView)
         contentView.addSubview(contentView.logoImageView)
         contentView.addSubview(contentView.loginButton)
-        contentView.addSubview(contentView.userTextField)
-        contentView.addSubview(contentView.passTextFIeld)
+        logPassView.addSubview(logPassView.userTextField)
+        logPassView.addSubview(logPassView.passTextFIeld)
+        contentView.addSubview(logPassView)
     
         contentView.translatesAutoresizingMaskIntoConstraints = false
         contentView.logoImageView.translatesAutoresizingMaskIntoConstraints = false
@@ -74,7 +79,9 @@ class LoginViewController: UIViewController {
         contentView.passTextFIeld.translatesAutoresizingMaskIntoConstraints = false
         contentView.loginButton.translatesAutoresizingMaskIntoConstraints = false
         scrollView.translatesAutoresizingMaskIntoConstraints = false
-        
+        logPassView.translatesAutoresizingMaskIntoConstraints = false
+        logPassView.userTextField.translatesAutoresizingMaskIntoConstraints = false
+        logPassView.passTextFIeld.translatesAutoresizingMaskIntoConstraints = false
     }
     
     override func viewDidLayoutSubviews() {
@@ -126,17 +133,9 @@ class LoginViewController: UIViewController {
             contentView.logoImageView.heightAnchor.constraint(equalToConstant: 100),
             contentView.logoImageView.centerXAnchor.constraint(equalTo: scrollView.centerXAnchor),
             
-            contentView.userTextField.topAnchor.constraint(equalTo:contentView.logoImageView.bottomAnchor, constant: 120),
-            contentView.userTextField.widthAnchor.constraint(equalTo: scrollView.widthAnchor, constant: -32),
-            contentView.userTextField.heightAnchor.constraint(equalToConstant: 50),
-            contentView.userTextField.centerXAnchor.constraint(equalTo: scrollView.centerXAnchor),
+        
             
-            contentView.passTextFIeld.topAnchor.constraint(equalTo: contentView.userTextField.bottomAnchor),
-            contentView.passTextFIeld.heightAnchor.constraint(equalToConstant: 50),
-            contentView.passTextFIeld.widthAnchor.constraint(equalTo: scrollView.widthAnchor, constant: -32),
-            contentView.passTextFIeld.centerXAnchor.constraint(equalTo: scrollView.centerXAnchor),
-            
-            contentView.loginButton.topAnchor.constraint(equalTo: contentView.passTextFIeld.bottomAnchor, constant: 16),
+            contentView.loginButton.topAnchor.constraint(equalTo: logPassView.bottomAnchor, constant: 16),
             contentView.loginButton.heightAnchor.constraint(equalToConstant: 50),
             contentView.loginButton.widthAnchor.constraint(equalTo: scrollView.widthAnchor, constant: -32),
             contentView.loginButton.centerXAnchor.constraint(equalTo: scrollView.centerXAnchor),
@@ -147,10 +146,21 @@ class LoginViewController: UIViewController {
             scrollView.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor),
             scrollView.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor),
             
-            scrollView.topAnchor.constraint(equalTo: contentView.topAnchor),
-            scrollView.bottomAnchor.constraint(equalTo: contentView.bottomAnchor),
-            scrollView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor),
-            scrollView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor),
+           
+            
+            logPassView.heightAnchor.constraint(equalToConstant: 100),
+            logPassView.topAnchor.constraint(equalTo: contentView.logoImageView.bottomAnchor, constant: 120),
+            logPassView.widthAnchor.constraint(equalTo: scrollView.widthAnchor, constant: -32),
+            logPassView.centerXAnchor.constraint(equalTo: scrollView.centerXAnchor),
+            
+            logPassView.userTextField.topAnchor.constraint(equalTo: logPassView.topAnchor),
+            logPassView.userTextField.heightAnchor.constraint(equalToConstant: 50),
+            logPassView.userTextField.widthAnchor.constraint(equalTo: logPassView.widthAnchor),
+            
+            logPassView.passTextFIeld.bottomAnchor.constraint(equalTo: logPassView.bottomAnchor),
+            logPassView.passTextFIeld.topAnchor.constraint(equalTo: logPassView.userTextField.bottomAnchor),
+            logPassView.passTextFIeld.heightAnchor.constraint(equalToConstant: 50),
+            logPassView.passTextFIeld.widthAnchor.constraint(equalTo: logPassView.widthAnchor)
             
         ]
         

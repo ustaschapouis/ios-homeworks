@@ -9,20 +9,11 @@ import UIKit
 
 class PostViewController: UIViewController {
 
-    private let post: Post
     
-    init(post: Post) {
-        self.post = post
-        super.init(nibName: nil, bundle: nil)
-    }
-    
-    required init?(coder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
-    }
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .magenta
-        title = post.title
+        title = "Post"
        
         let button = UIButton(frame: CGRect(x: 100, y: 300, width: 200, height: 50))
         button.center = self.view.center

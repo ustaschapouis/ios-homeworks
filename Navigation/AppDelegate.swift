@@ -24,7 +24,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         feedVC.view.backgroundColor = .systemBlue
         feedVC.tabBarItem = UITabBarItem(title: "Feed", image: UIImage(named: "feedIcon"), tag: 0)
         
-        let profileVC = ProfileViewController()
+        let profileVC = LoginViewController()
         profileVC.tabBarItem = UITabBarItem(title: "Profile", image: UIImage(named: "profileIcon"), tag: 1)
         
        

@@ -16,6 +16,8 @@
 		3C2FDE6F26DA4E04005D55A0 /* InfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C2FDE6E26DA4E04005D55A0 /* InfoViewController.swift */; };
 		3C40D3DA26DE71F500005423 /* ProfileHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C40D3D926DE71F500005423 /* ProfileHeaderView.swift */; };
 		3C40D3DC26DE720F00005423 /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C40D3DB26DE720F00005423 /* ProfileViewController.swift */; };
+		3C5A9F7C26E91CF70056973A /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C5A9F7B26E91CF70056973A /* LoginViewController.swift */; };
+		3C5A9F8026EA52320056973A /* Post.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C5A9F7F26EA52310056973A /* Post.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -30,6 +32,8 @@
 		3C2FDE6E26DA4E04005D55A0 /* InfoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoViewController.swift; sourceTree = "<group>"; };
 		3C40D3D926DE71F500005423 /* ProfileHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileHeaderView.swift; sourceTree = "<group>"; };
 		3C40D3DB26DE720F00005423 /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
+		3C5A9F7B26E91CF70056973A /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
+		3C5A9F7F26EA52310056973A /* Post.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Post.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -80,6 +84,8 @@
 			children = (
 				3C40D3D926DE71F500005423 /* ProfileHeaderView.swift */,
 				3C40D3DB26DE720F00005423 /* ProfileViewController.swift */,
+				3C5A9F7B26E91CF70056973A /* LoginViewController.swift */,
+				3C5A9F7F26EA52310056973A /* Post.swift */,
 			);
 			path = Profile;
 			sourceTree = "<group>";
@@ -157,9 +163,11 @@
 				3C40D3DA26DE71F500005423 /* ProfileHeaderView.swift in Sources */,
 				3C2FDE5526D8BEA0005D55A0 /* AppDelegate.swift in Sources */,
 				3C2FDE6926D8CA72005D55A0 /* FeedViewController.swift in Sources */,
+				3C5A9F7C26E91CF70056973A /* LoginViewController.swift in Sources */,
 				3C40D3DC26DE720F00005423 /* ProfileViewController.swift in Sources */,
 				3C2FDE6F26DA4E04005D55A0 /* InfoViewController.swift in Sources */,
 				3C2FDE6D26D91083005D55A0 /* PostViewController.swift in Sources */,
+				3C5A9F8026EA52320056973A /* Post.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

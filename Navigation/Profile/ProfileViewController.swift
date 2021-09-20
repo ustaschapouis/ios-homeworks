@@ -8,8 +8,10 @@
 import UIKit
 
 class ProfileViewController: UIViewController {
+    let cellID = "cellID"
+    let tableView = UITableView(frame: .zero, style: .grouped)
 
-    let tableView = UITableView()
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -24,11 +26,12 @@ class ProfileViewController: UIViewController {
     func setupView () {
         view.addSubview(tableView)
         tableView.translatesAutoresizingMaskIntoConstraints = false
-        tableView.register(UITableViewCell.self, forCellReuseIdentifier: "cellID")
+        tableView.register(PostTableViewCell.self, forCellReuseIdentifier: cellID)
         tableView.register(ProfileTableHeaderView.self, forHeaderFooterViewReuseIdentifier: "header")
         tableView.delegate = self
         tableView.dataSource = self
         tableView.backgroundColor = .white
+        
 
     }
     
@@ -45,12 +48,20 @@ class ProfileViewController: UIViewController {
 
 extension ProfileViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 4
+        return Posts.content.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "cellID", for: indexPath)
+        let cell = tableView.dequeueReusableCell(withIdentifier: cellID) as! PostTableViewCell
+        let postCell = Posts.content[indexPath.row]
+        cell.authorLabel.text = postCell.author
+        cell.postImage.image = UIImage(named: postCell.image)
+        cell.descriptionLabel.text = postCell.description
+        cell.likesLabel.text = "Likes: \(postCell.likes)"
+        cell.viewsLabel.text = "Views: \(postCell.views)"
         
+        
+                
         return cell
     }
 
@@ -63,4 +74,6 @@ extension ProfileViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
         return 220
     }
+    
+    
 }

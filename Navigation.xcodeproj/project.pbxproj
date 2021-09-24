@@ -18,8 +18,8 @@
 		3C40D3DC26DE720F00005423 /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C40D3DB26DE720F00005423 /* ProfileViewController.swift */; };
 		3C5A9F7C26E91CF70056973A /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C5A9F7B26E91CF70056973A /* LoginViewController.swift */; };
 		3CC0ED2526F1DAC200ADB19C /* PostTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CC0ED2426F1DAC200ADB19C /* PostTableViewCell.swift */; };
-		3CC0ED2726F3872C00ADB19C /* Post.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CC0ED2626F3872C00ADB19C /* Post.swift */; };
 		3CC0ED2926F9CA6700ADB19C /* PhotosTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CC0ED2826F9CA6700ADB19C /* PhotosTableViewCell.swift */; };
+		3CC0ED2B26FDBE8700ADB19C /* Post.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CC0ED2A26FDBE8700ADB19C /* Post.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -36,8 +36,8 @@
 		3C40D3DB26DE720F00005423 /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
 		3C5A9F7B26E91CF70056973A /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		3CC0ED2426F1DAC200ADB19C /* PostTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostTableViewCell.swift; sourceTree = "<group>"; };
-		3CC0ED2626F3872C00ADB19C /* Post.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Post.swift; path = ../../../../.Trash/Post.swift; sourceTree = "<group>"; };
 		3CC0ED2826F9CA6700ADB19C /* PhotosTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotosTableViewCell.swift; sourceTree = "<group>"; };
+		3CC0ED2A26FDBE8700ADB19C /* Post.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Post.swift; path = Navigation/Post.swift; sourceTree = SOURCE_ROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -89,7 +89,7 @@
 				3C40D3D926DE71F500005423 /* ProfileHeaderView.swift */,
 				3C40D3DB26DE720F00005423 /* ProfileViewController.swift */,
 				3C5A9F7B26E91CF70056973A /* LoginViewController.swift */,
-				3CC0ED2626F3872C00ADB19C /* Post.swift */,
+				3CC0ED2A26FDBE8700ADB19C /* Post.swift */,
 				3CC0ED2426F1DAC200ADB19C /* PostTableViewCell.swift */,
 				3CC0ED2826F9CA6700ADB19C /* PhotosTableViewCell.swift */,
 			);
@@ -168,6 +168,7 @@
 				3C2FDE5926D8BEA0005D55A0 /* ViewController.swift in Sources */,
 				3C40D3DA26DE71F500005423 /* ProfileHeaderView.swift in Sources */,
 				3C2FDE5526D8BEA0005D55A0 /* AppDelegate.swift in Sources */,
+				3CC0ED2B26FDBE8700ADB19C /* Post.swift in Sources */,
 				3CC0ED2926F9CA6700ADB19C /* PhotosTableViewCell.swift in Sources */,
 				3C2FDE6926D8CA72005D55A0 /* FeedViewController.swift in Sources */,
 				3C5A9F7C26E91CF70056973A /* LoginViewController.swift in Sources */,
@@ -175,7 +176,6 @@
 				3C2FDE6F26DA4E04005D55A0 /* InfoViewController.swift in Sources */,
 				3CC0ED2526F1DAC200ADB19C /* PostTableViewCell.swift in Sources */,
 				3C2FDE6D26D91083005D55A0 /* PostViewController.swift in Sources */,
-				3CC0ED2726F3872C00ADB19C /* Post.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -13,8 +13,8 @@ class ProfileViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        navigationController?.navigationBar.isHidden = false
-        title = "Profile"
+        view.backgroundColor = .systemGray
+        
         
         setupView()
         setupConstraints()
@@ -22,7 +22,7 @@ class ProfileViewController: UIViewController {
  
     func setupView () {
         view.addSubview(tableView)
-        view.backgroundColor = .systemGray5
+        
         tableView.translatesAutoresizingMaskIntoConstraints = false
         tableView.register(PostTableViewCell.self, forCellReuseIdentifier: cellID)
         tableView.register(ProfileTableHeaderView.self, forHeaderFooterViewReuseIdentifier: "header")
@@ -30,6 +30,7 @@ class ProfileViewController: UIViewController {
         tableView.delegate = self
         tableView.dataSource = self
         tableView.backgroundColor = .white
+        
     }
     
     func setupConstraints() {
@@ -75,6 +76,7 @@ extension ProfileViewController: UITableViewDelegate, UITableViewDataSource {
         
         if section == 0 {
             let view = tableView.dequeueReusableHeaderFooterView(withIdentifier: "header") as! ProfileTableHeaderView
+            
             return view
         } else {
             return nil

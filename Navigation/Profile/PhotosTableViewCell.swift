@@ -50,11 +50,9 @@ class PhotosTableViewCell: UITableViewCell {
         return title
     }()
     
-    let arrowTitle: UILabel = {
-        let arrow = UILabel()
-        arrow.text = "Strelka"
-        arrow.font = UIFont.boldSystemFont(ofSize: 24)
-        arrow.textColor = .black
+    let arrowIcon: UIImageView = {
+        let arrow = UIImageView()
+        arrow.image = UIImage(named: "arrow_icon")
         arrow.translatesAutoresizingMaskIntoConstraints = false
         return arrow
     }()
@@ -77,7 +75,7 @@ class PhotosTableViewCell: UITableViewCell {
         contentView.addSubview(feedPhoto2)
         contentView.addSubview(feedPhoto3)
         contentView.addSubview(feedPhoto4)
-        contentView.addSubview(arrowTitle)
+        contentView.addSubview(arrowIcon)
 
 }
 
@@ -108,9 +106,15 @@ class PhotosTableViewCell: UITableViewCell {
             feedTitle.leftAnchor.constraint(equalTo: contentView.leftAnchor, constant: 12),
             feedTitle.bottomAnchor.constraint(equalTo: feedPhoto1.topAnchor, constant: -12),
             
-            arrowTitle.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 12),
-            arrowTitle.rightAnchor.constraint(equalTo: contentView.rightAnchor, constant: -12),
-            arrowTitle.bottomAnchor.constraint(equalTo: feedPhoto4.topAnchor, constant: -12)
+            arrowIcon.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 12),
+            arrowIcon.rightAnchor.constraint(equalTo: contentView.rightAnchor, constant: -12),
+            arrowIcon.bottomAnchor.constraint(equalTo: feedPhoto4.topAnchor, constant: -12),
+            arrowIcon.centerYAnchor.constraint(equalTo: feedTitle.centerYAnchor),
+            arrowIcon.heightAnchor.constraint(equalToConstant: 36),
+            arrowIcon.widthAnchor.constraint(equalToConstant: 36),
+            
+            
+            
             
             
             

@@ -11,7 +11,7 @@ import UIKit
 class ProfileTableHeaderView: UITableViewHeaderFooterView {
     
     private var statusText = ""
-    private let headerView = UIView()
+    
     
     let buttonField: UIButton = {
         let button = UIButton()
@@ -70,13 +70,15 @@ class ProfileTableHeaderView: UITableViewHeaderFooterView {
 
     override init(reuseIdentifier: String?) {
         super.init(reuseIdentifier: reuseIdentifier)
-        contentView.backgroundColor = .systemGray5
+        
+        
         
         setupContent()
     }
     
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
+        
     }
     
     func setupContent() {
@@ -85,6 +87,10 @@ class ProfileTableHeaderView: UITableViewHeaderFooterView {
         contentView.addSubview(nameTextField)
         contentView.addSubview(statusField)
         contentView.addSubview(statusLabelField)
+        contentView.backgroundColor = .systemGray5
+        
+        
+        
         
         NSLayoutConstraint.activate([
             avatarImage.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 16),

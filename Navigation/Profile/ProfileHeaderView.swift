@@ -11,7 +11,6 @@ import UIKit
 class ProfileTableHeaderView: UITableViewHeaderFooterView {
     
     private var statusText = ""
-    private let headerView = UIView()
     
     let buttonField: UIButton = {
         let button = UIButton()

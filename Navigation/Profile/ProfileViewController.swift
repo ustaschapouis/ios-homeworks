@@ -15,9 +15,8 @@ class ProfileViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        navigationController?.navigationBar.isHidden = false
-        title = "Profile"
-        
+        navigationController?.navigationBar.isHidden = true
+ 
         setupView()
         setupConstraints()
     
@@ -32,7 +31,6 @@ class ProfileViewController: UIViewController {
         tableView.dataSource = self
         tableView.backgroundColor = .white
         
-
     }
     
     func setupConstraints() {

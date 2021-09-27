@@ -113,14 +113,9 @@ class PhotosTableViewCell: UITableViewCell {
             arrowIcon.heightAnchor.constraint(equalToConstant: 36),
             arrowIcon.widthAnchor.constraint(equalToConstant: 36),
             
-            
-            
-            
-            
-            
     ])
 
     }
     
-
+    
 }

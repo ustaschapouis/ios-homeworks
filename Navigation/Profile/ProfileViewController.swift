@@ -13,13 +13,11 @@ class ProfileViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        view.backgroundColor = .systemGray
-        
-        
+
         setupView()
         setupConstraints()
     }
- 
+
     func setupView () {
         view.addSubview(tableView)
         
@@ -29,8 +27,12 @@ class ProfileViewController: UIViewController {
         tableView.register(PhotosTableViewCell.self, forCellReuseIdentifier: "Photos")
         tableView.delegate = self
         tableView.dataSource = self
-        tableView.backgroundColor = .white
+        tableView.backgroundColor = .systemGray5
         
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        navigationController?.setNavigationBarHidden(true, animated: true)
     }
     
     func setupConstraints() {
@@ -54,10 +56,11 @@ extension ProfileViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         if indexPath.section == 0 {
             let cell = tableView.dequeueReusableCell(withIdentifier: "Photos", for: indexPath) as! PhotosTableViewCell
-            cell.feedPhoto1.image = UIImage(named: Posts.photos[indexPath.row])
-            cell.feedPhoto2.image = UIImage(named: Posts.photos[indexPath.row + 1])
-            cell.feedPhoto3.image = UIImage(named: Posts.photos[indexPath.row + 2])
-            cell.feedPhoto4.image = UIImage(named: Posts.photos[indexPath.row + 3])
+            cell.feedPhoto1.image = UIImage(named: Photos.photos[indexPath.row])
+            cell.feedPhoto2.image = UIImage(named: Photos.photos[indexPath.row + 1])
+            cell.feedPhoto3.image = UIImage(named: Photos.photos[indexPath.row + 2])
+            cell.feedPhoto4.image = UIImage(named: Photos.photos[indexPath.row + 3])
+            
             return cell
         }
         
@@ -76,7 +79,6 @@ extension ProfileViewController: UITableViewDelegate, UITableViewDataSource {
         
         if section == 0 {
             let view = tableView.dequeueReusableHeaderFooterView(withIdentifier: "header") as! ProfileTableHeaderView
-            
             return view
         } else {
             return nil
@@ -94,7 +96,13 @@ extension ProfileViewController: UITableViewDelegate, UITableViewDataSource {
     func numberOfSections(in tableView: UITableView) -> Int {
         return 2
     }
-}
     
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let photosVC = PhotosViewController()
+        if indexPath.section == 0 {
+        navigationController?.pushViewController(photosVC, animated: true)
+    }
+}
+}
     
 

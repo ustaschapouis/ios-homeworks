@@ -12,6 +12,11 @@ class ProfileTableHeaderView: UITableViewHeaderFooterView {
     
     private var statusText = ""
     
+    let headerView: UIView = {
+        let headerView = UIView()
+        headerView.translatesAutoresizingMaskIntoConstraints = false
+        return headerView
+    }()
     
     let buttonField: UIButton = {
         let button = UIButton()
@@ -71,8 +76,6 @@ class ProfileTableHeaderView: UITableViewHeaderFooterView {
     override init(reuseIdentifier: String?) {
         super.init(reuseIdentifier: reuseIdentifier)
         
-        
-        
         setupContent()
     }
     
@@ -82,17 +85,21 @@ class ProfileTableHeaderView: UITableViewHeaderFooterView {
     }
     
     func setupContent() {
-        contentView.addSubview(avatarImage)
-        contentView.addSubview(buttonField)
-        contentView.addSubview(nameTextField)
-        contentView.addSubview(statusField)
-        contentView.addSubview(statusLabelField)
+        contentView.addSubview(headerView)
+        headerView.addSubview(avatarImage)
+        headerView.addSubview(buttonField)
+        headerView.addSubview(nameTextField)
+        headerView.addSubview(statusField)
+        headerView.addSubview(statusLabelField)
         contentView.backgroundColor = .systemGray5
         
-        
-        
-        
         NSLayoutConstraint.activate([
+            
+            headerView.topAnchor.constraint(equalTo: contentView.topAnchor),
+            headerView.bottomAnchor.constraint(equalTo: contentView.bottomAnchor),
+            headerView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor),
+            headerView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor),
+            
             avatarImage.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 16),
             avatarImage.leftAnchor.constraint(equalTo: contentView.leftAnchor, constant: 16),
             avatarImage.widthAnchor.constraint(equalToConstant: 100),
@@ -123,7 +130,7 @@ class ProfileTableHeaderView: UITableViewHeaderFooterView {
         statusText = statusField.text!
            }
    
-   }
+}
        
   
 

@@ -27,19 +27,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         let profileVC = LoginViewController()
         profileVC.tabBarItem = UITabBarItem(title: "Profile", image: UIImage(named: "profileIcon"), tag: 1)
         
-       
         let feedNavVC = UINavigationController(rootViewController: feedVC)
         let profileNavVC = UINavigationController(rootViewController: profileVC)
             
         tabBarController.viewControllers = [feedNavVC, profileNavVC]
         
-
         window?.rootViewController = tabBarController
-        
-        
-        
-       
-        
         
         return true
     }

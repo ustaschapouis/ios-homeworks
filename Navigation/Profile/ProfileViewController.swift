@@ -93,10 +93,7 @@ extension ProfileViewController: UITableViewDelegate, UITableViewDataSource {
     @objc func press() {
         let anime: UIView = {
         let ani = UIView()
-            ani.backgroundColor = UIColor(white: 1, alpha: 0.5)
-            
-
-      
+        ani.backgroundColor = UIColor(white: 1, alpha: 0.8)
         return ani
         }()
         
@@ -112,15 +109,13 @@ extension ProfileViewController: UITableViewDelegate, UITableViewDataSource {
         return ava
            
         }()
-        tableView.addSubview(avatar)
+        anime.addSubview(avatar)
         tableView.addSubview(anime)
        
         UIView.animate(withDuration: 0.5, delay: 0, options: .curveEaseInOut, animations: {
             anime.frame = CGRect(x: 0, y: 0, width: self.tableView.frame.width, height: self.tableView.frame.height)
             anime.layer.cornerRadius = 20
-//            anime.alpha = 0.7
-            avatar.frame = CGRect(x: 0, y: 16, width: self.tableView.frame.width, height: self.tableView.frame.height-150)
-            avatar.alpha = 1
+            avatar.frame = CGRect(x: 0, y: 18, width: self.tableView.frame.width, height: self.tableView.frame.height-200)
             self.tableView.layoutIfNeeded()
         })
             

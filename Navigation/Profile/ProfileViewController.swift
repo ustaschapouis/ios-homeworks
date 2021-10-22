@@ -76,14 +76,57 @@ extension ProfileViewController: UITableViewDelegate, UITableViewDataSource {
         }
 
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-        
         if section == 0 {
-            let view = tableView.dequeueReusableHeaderFooterView(withIdentifier: "header") as! ProfileTableHeaderView
-            return view
+            let header = tableView.dequeueReusableHeaderFooterView(withIdentifier: "header") as! ProfileTableHeaderView
+            
+            let gesture = UITapGestureRecognizer(target: self, action: #selector(press))
+            header.avatarImage.addGestureRecognizer(gesture)
+            header.avatarImage.isUserInteractionEnabled = true
+
+            return header
         } else {
             return nil
         }
+   
     }
+    
+    @objc func press() {
+        let anime: UIView = {
+        let ani = UIView()
+            ani.backgroundColor = UIColor(white: 1, alpha: 0.5)
+            
+
+      
+        return ani
+        }()
+        
+        let avatar: UIImageView = {
+        let ava = UIImageView()
+        ava.image = UIImage(named: "avatar")
+        ava.frame = CGRect(x: 16, y: 16, width: 100, height: 100)
+        ava.layer.borderWidth = 3
+        ava.layer.cornerRadius = 50
+        ava.clipsToBounds = true
+        ava.layer.borderColor = UIColor.white.cgColor
+        ava.layer.masksToBounds = true
+        return ava
+           
+        }()
+        tableView.addSubview(avatar)
+        tableView.addSubview(anime)
+       
+        UIView.animate(withDuration: 0.5, delay: 0, options: .curveEaseInOut, animations: {
+            anime.frame = CGRect(x: 0, y: 0, width: self.tableView.frame.width, height: self.tableView.frame.height)
+            anime.layer.cornerRadius = 20
+//            anime.alpha = 0.7
+            avatar.frame = CGRect(x: 0, y: 16, width: self.tableView.frame.width, height: self.tableView.frame.height-150)
+            avatar.alpha = 1
+            self.tableView.layoutIfNeeded()
+        })
+            
+        print("AZAZA!!!")
+        }
+           
     
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
         if section == 0 {

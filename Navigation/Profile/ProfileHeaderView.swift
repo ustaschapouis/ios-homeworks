@@ -12,10 +12,15 @@ class ProfileTableHeaderView: UITableViewHeaderFooterView {
     
     private var statusText = ""
     
+    var animeHeightAnchor: NSLayoutConstraint!
+    var animeWidhtAnchor: NSLayoutConstraint!
+    var animeLeftAnchor: NSLayoutConstraint!
+    var animeTopAnchor: NSLayoutConstraint!
+    
     let headerView: UIView = {
-        let headerView = UIView()
-        headerView.translatesAutoresizingMaskIntoConstraints = false
-        return headerView
+        let header = UIView()
+        header.translatesAutoresizingMaskIntoConstraints = false
+        return header
     }()
     
     let buttonField: UIButton = {
@@ -23,15 +28,16 @@ class ProfileTableHeaderView: UITableViewHeaderFooterView {
         button.setTitle("Set Status", for: .normal)
         button.backgroundColor = .systemBlue
         button.layer.cornerRadius = 14
-        button .layer.shadowOffset = CGSize(width: 4, height: 4)
-        button .layer.shadowRadius = 4
-        button .layer.shadowColor = UIColor.black.cgColor
-        button .layer.shadowOpacity = 0.7
-        button .addTarget(self, action: #selector(tap), for: .touchUpInside)
+        button.layer.shadowOffset = CGSize(width: 4, height: 4)
+        button.layer.shadowRadius = 4
+        button.layer.shadowColor = UIColor.black.cgColor
+        button.layer.shadowOpacity = 0.7
+        button.addTarget(self, action: #selector(tap), for: .touchUpInside)
         button.translatesAutoresizingMaskIntoConstraints = false
         return button
     }()
     
+  
     let avatarImage: UIImageView = {
         let avatar = UIImageView()
         avatar.image = UIImage(named: "avatar")
@@ -40,9 +46,11 @@ class ProfileTableHeaderView: UITableViewHeaderFooterView {
         avatar.clipsToBounds = true
         avatar.layer.borderColor = UIColor.white.cgColor
         avatar.layer.masksToBounds = true
+        avatar.isUserInteractionEnabled = true
         avatar.translatesAutoresizingMaskIntoConstraints = false
         return avatar
     }()
+
     
     let nameTextField: UILabel = {
         let textLabel = UILabel()
@@ -93,31 +101,42 @@ class ProfileTableHeaderView: UITableViewHeaderFooterView {
         headerView.addSubview(statusLabelField)
         contentView.backgroundColor = .systemGray5
         
+//        animeHeightAnchor = avatarImage.heightAnchor.constraint(equalToConstant: 100)
+//        animeWidhtAnchor = avatarImage.widthAnchor.constraint(equalToConstant: 100)
+//        animeLeftAnchor = avatarImage.leftAnchor.constraint(equalTo: headerView.leftAnchor, constant: 16)
+//        animeTopAnchor = avatarImage.topAnchor.constraint(equalTo: headerView.topAnchor, constant: 16)
+        
+//        animeWidhtAnchor.isActive = true
+//        animeHeightAnchor.isActive = true
+//        animeTopAnchor.isActive = true
+//        animeLeftAnchor.isActive = true
+        
         NSLayoutConstraint.activate([
             
             headerView.topAnchor.constraint(equalTo: contentView.topAnchor),
             headerView.bottomAnchor.constraint(equalTo: contentView.bottomAnchor),
-            headerView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor),
-            headerView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor),
+            headerView.widthAnchor.constraint(equalTo: contentView.widthAnchor),
+            headerView.heightAnchor.constraint(equalTo: contentView.heightAnchor),
             
-            avatarImage.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 16),
-            avatarImage.leftAnchor.constraint(equalTo: contentView.leftAnchor, constant: 16),
+            avatarImage.topAnchor.constraint(equalTo: headerView.topAnchor, constant: 16),
+            avatarImage.leftAnchor.constraint(equalTo: headerView.leftAnchor, constant: 16),
             avatarImage.widthAnchor.constraint(equalToConstant: 100),
             avatarImage.heightAnchor.constraint(equalToConstant: 100),
             
-            buttonField.widthAnchor.constraint(equalTo: contentView.widthAnchor, constant: -32),
+            buttonField.leftAnchor.constraint(equalTo: headerView.leftAnchor, constant: 16),
             buttonField.heightAnchor.constraint(equalToConstant: 50),
-            buttonField.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 142),
-            buttonField.centerXAnchor.constraint(equalTo: contentView.centerXAnchor),
+            buttonField.topAnchor.constraint(equalTo: headerView.topAnchor, constant: 142),
+            buttonField.centerXAnchor.constraint(equalTo: headerView.centerXAnchor),
+            buttonField.widthAnchor.constraint(equalTo: headerView.widthAnchor, constant: -32),
             
-            nameTextField.leftAnchor.constraint(equalTo: avatarImage.rightAnchor, constant: 20),
-            nameTextField.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 16),
+            nameTextField.leftAnchor.constraint(equalTo: headerView.leftAnchor, constant: 136),
+            nameTextField.topAnchor.constraint(equalTo: headerView.topAnchor, constant: 16),
             nameTextField.heightAnchor.constraint(equalToConstant: 50),
             
-            statusField.leftAnchor.constraint(equalTo: avatarImage.rightAnchor, constant: 20),
+            statusField.leftAnchor.constraint(equalTo: headerView.leftAnchor, constant: 136),
             statusField.topAnchor.constraint(equalTo: nameTextField.bottomAnchor, constant: 10),
             
-            statusLabelField.leftAnchor.constraint(equalTo: avatarImage.rightAnchor, constant: 20),
+            statusLabelField.leftAnchor.constraint(equalTo: headerView.leftAnchor, constant: 136),
             statusLabelField.topAnchor.constraint(equalTo: statusField.bottomAnchor, constant: 16),
         ])
     }
@@ -129,7 +148,7 @@ class ProfileTableHeaderView: UITableViewHeaderFooterView {
     @objc func statusTextChanged(_ textField: UITextField) {
         statusText = statusField.text!
            }
-   
+    
 }
        
   

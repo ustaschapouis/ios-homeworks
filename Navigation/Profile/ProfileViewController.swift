@@ -208,59 +208,7 @@ extension ProfileViewController: UITableViewDelegate, UITableViewDataSource {
         })
         self.view.layoutIfNeeded()
     }
-
-
-//    @objc func press() {
-//        let anime: UIView = {
-//        let ani = UIView()
-//        ani.backgroundColor = UIColor(white: 1, alpha: 0.8)
-//        return ani
-//        }()
-//
-//        let avatar: UIImageView = {
-//        let ava = UIImageView()
-//        ava.image = UIImage(named: "avatar")
-//        ava.frame = CGRect(x: 16, y: 16, width: 100, height: 100)
-//        ava.layer.borderWidth = 3
-//        ava.layer.cornerRadius = 50
-//        ava.clipsToBounds = true
-//        ava.layer.borderColor = UIColor.white.cgColor
-//        ava.layer.masksToBounds = true
-//        return ava
-//        }()
-//
-//        let crossButton: UIButton = {
-//        let button = UIButton(type: .custom)
-//
-//        button.setTitleColor(.black, for: .normal)
-//        button.setTitle("X", for: .normal)
-//        button.layer.borderWidth = 10
-//        button.layer.cornerRadius = 20
-//        button.addTarget(self, action: #selector(close), for: .touchUpInside)
-//        return button
-//        }()
-//
-//        anime.addSubview(avatar)
-//        anime.addSubview(crossButton)
-//        tableView.addSubview(anime)
-//
-//        UIView.animate(withDuration: 0.5, delay: 0, options: .curveEaseInOut, animations: {
-//            anime.frame = CGRect(x: 0, y: 0, width: self.tableView.frame.width, height: self.tableView.frame.height)
-//            anime.layer.cornerRadius = 20
-//            avatar.frame = CGRect(x: 0, y: 18, width: self.tableView.frame.width, height: self.tableView.frame.height-200)
-//            crossButton.frame = CGRect(x: 390, y: 15, width: 15, height: 15)
-//            self.tableView.layoutIfNeeded()
-//        })
-//
-//        print("AZAZA!!!")
-//        }
-    
-//    @objc func close() {
-//
-//
-//    }
            
-    
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
         if section == 0 {
         return 220

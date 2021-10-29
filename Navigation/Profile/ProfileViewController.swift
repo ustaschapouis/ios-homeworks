@@ -10,6 +10,9 @@ import UIKit
 class ProfileViewController: UIViewController {
     let cellID = "cellID"
     let tableView = UITableView(frame: .zero, style: .grouped)
+    private var avatarImageView: UIImageView?
+    private var backgroundView:  UIView?
+    private var crossButton: UIButton?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -79,8 +82,8 @@ extension ProfileViewController: UITableViewDelegate, UITableViewDataSource {
         if section == 0 {
             let header = tableView.dequeueReusableHeaderFooterView(withIdentifier: "header") as! ProfileTableHeaderView
             
-            let gesture = UITapGestureRecognizer(target: self, action: #selector(press))
-            header.avatarImage.addGestureRecognizer(gesture)
+            
+        header.avatarImage.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(avatarResize)))
             header.avatarImage.isUserInteractionEnabled = true
 
             return header
@@ -89,56 +92,173 @@ extension ProfileViewController: UITableViewDelegate, UITableViewDataSource {
         }
    
     }
-    
-    @objc func press() {
-        let anime: UIView = {
-        let ani = UIView()
-        ani.backgroundColor = UIColor(white: 1, alpha: 0.8)
-        return ani
-        }()
+
+    @objc func avatarResize(sender: UITapGestureRecognizer) {
         
-        let avatar: UIImageView = {
-        let ava = UIImageView()
-        ava.image = UIImage(named: "avatar")
-        ava.frame = CGRect(x: 16, y: 16, width: 100, height: 100)
-        ava.layer.borderWidth = 3
-        ava.layer.cornerRadius = 50
-        ava.clipsToBounds = true
-        ava.layer.borderColor = UIColor.white.cgColor
-        ava.layer.masksToBounds = true
-        return ava
-        }()
+        self.view.layoutIfNeeded()
+
         
-        let crossButton: UIButton = {
-        let button = UIButton(type: .custom)
-        
-        button.setTitleColor(.black, for: .normal)
-        button.setTitle("X", for: .normal)
-        button.layer.borderWidth = 10
-        button.layer.cornerRadius = 20
-        button.addTarget(self, action: #selector(close), for: .touchUpInside)
-        return button
-        }()
-        
-        anime.addSubview(avatar)
-        anime.addSubview(crossButton)
-        tableView.addSubview(anime)
-       
-        UIView.animate(withDuration: 0.5, delay: 0, options: .curveEaseInOut, animations: {
-            anime.frame = CGRect(x: 0, y: 0, width: self.tableView.frame.width, height: self.tableView.frame.height)
-            anime.layer.cornerRadius = 20
-            avatar.frame = CGRect(x: 0, y: 18, width: self.tableView.frame.width, height: self.tableView.frame.height-200)
-            crossButton.frame = CGRect(x: 390, y: 15, width: 15, height: 15)
-            self.tableView.layoutIfNeeded()
-        })
-            
-        print("AZAZA!!!")
+        func setupAvatarImageView(){
+            let imageView = sender.view as! UIImageView
+            avatarImageView = UIImageView(image: imageView.image)
+            avatarImageView?.layer.cornerRadius = view.bounds.height / 2
+            avatarImageView?.contentMode = .scaleAspectFit
+            avatarImageView?.clipsToBounds = true
         }
+        setupAvatarImageView()
+        
+        
+        var heightAvatar: CGFloat = 0
+        if avatarImageView != nil {
+            heightAvatar = avatarImageView!.bounds.size.height / avatarImageView!.bounds.size.width
+        }
+       
+  
+        func setupBackgroundView() {
+            backgroundView = UIView(frame: UIScreen.main.bounds)
+            backgroundView?.backgroundColor = UIColor.white
+            backgroundView?.alpha = 0
+        }
+        setupBackgroundView()
+        
+        
+        func setupCrossButton(){
+            crossButton = UIButton(type: .system)
+            crossButton?.setBackgroundImage(UIImage(systemName: "cross"), for: .normal)
+            crossButton?.sizeToFit()
+            crossButton?.tintColor = .black
+            crossButton?.transform = crossButton!.transform.scaledBy(x: 1.5, y: 1.5)
+            crossButton?.alpha = 0
+        }
+        setupCrossButton()
+        
+             
+        self.view.addSubview(backgroundView ?? UIImageView())
+        self.view.addSubview(avatarImageView ?? UIView())
+        avatarImageView?.addSubview(crossButton ?? UIButton())
+        
+        
+        self.tabBarController?.tabBar.isHidden = true
     
-    @objc func close() {
-    
+        
+        UIView.animateKeyframes(withDuration: 0.5, delay: 0, options: [], animations: {
+            UIView.addKeyframe(withRelativeStartTime: 0, relativeDuration: 1){
+                self.avatarImageView?.bounds.size.width = UIScreen.main.bounds.width
+                self.avatarImageView?.layer.cornerRadius = self.view.bounds.height / 2
+            }
+            UIView.addKeyframe(withRelativeStartTime: 0.0, relativeDuration: 1){
+                self.avatarImageView?.center = CGPoint(
+                    x: self.view.bounds.midX,
+                    y: self.view.bounds.midY)
+            }
+            UIView.addKeyframe(withRelativeStartTime: 0.0, relativeDuration: 1){
+                self.avatarImageView?.layer.cornerRadius = 0
+            }
+            UIView.addKeyframe(withRelativeStartTime: 0.0, relativeDuration: 1){
+                self.backgroundView?.alpha = 0.7
+            }
             
+        }, completion: {finished in
+            UIView.animateKeyframes(withDuration: 0.3, delay: 0, options: [], animations: {
+                UIView.addKeyframe(withRelativeStartTime: 0.0, relativeDuration: 0.2) {
+                    if self.avatarImageView != nil && self.crossButton != nil{
+                        self.crossButton?.frame.origin = CGPoint(
+                            x: self.avatarImageView!.frame.maxX - self.crossButton!.bounds.size.width * 1.5,
+                            y: 0)
+                    }
+                }
+                
+                UIView.addKeyframe(withRelativeStartTime: 0.3, relativeDuration: 0.8) {
+                    self.crossButton?.alpha = 1
+                }
+            })
+        })
+
+        
+        avatarImageView?.isUserInteractionEnabled = true
+        crossButton?.isUserInteractionEnabled = true
+        
+        crossButton?.addTarget(self, action: #selector(self.reversViewAnimate), for: .touchUpInside)
+        self.view.layoutIfNeeded()
     }
+    
+    @objc func reversViewAnimate(){
+        self.view.layoutIfNeeded()
+        UIView.animateKeyframes(withDuration: 0.5, delay: 0, options: [], animations: {
+            UIView.addKeyframe(withRelativeStartTime: 0.0, relativeDuration: 1){
+                self.crossButton?.alpha = 0
+                self.crossButton = nil
+            }
+
+            UIView.addKeyframe(withRelativeStartTime: 0.0, relativeDuration: 1){
+                self.backgroundView?.alpha = 0
+                self.backgroundView = nil
+            }
+            
+            UIView.addKeyframe(withRelativeStartTime: 0.0, relativeDuration: 1){
+                self.avatarImageView?.alpha = 0
+                self.avatarImageView?.layer.cornerRadius = self.view.bounds.height / 2
+                self.avatarImageView?.frame = CGRect(
+                    x: 1,
+                    y: 1,
+                    width: 1,
+                    height: 1)
+                self.avatarImageView = nil
+            }
+        })
+        self.view.layoutIfNeeded()
+    }
+
+
+//    @objc func press() {
+//        let anime: UIView = {
+//        let ani = UIView()
+//        ani.backgroundColor = UIColor(white: 1, alpha: 0.8)
+//        return ani
+//        }()
+//
+//        let avatar: UIImageView = {
+//        let ava = UIImageView()
+//        ava.image = UIImage(named: "avatar")
+//        ava.frame = CGRect(x: 16, y: 16, width: 100, height: 100)
+//        ava.layer.borderWidth = 3
+//        ava.layer.cornerRadius = 50
+//        ava.clipsToBounds = true
+//        ava.layer.borderColor = UIColor.white.cgColor
+//        ava.layer.masksToBounds = true
+//        return ava
+//        }()
+//
+//        let crossButton: UIButton = {
+//        let button = UIButton(type: .custom)
+//
+//        button.setTitleColor(.black, for: .normal)
+//        button.setTitle("X", for: .normal)
+//        button.layer.borderWidth = 10
+//        button.layer.cornerRadius = 20
+//        button.addTarget(self, action: #selector(close), for: .touchUpInside)
+//        return button
+//        }()
+//
+//        anime.addSubview(avatar)
+//        anime.addSubview(crossButton)
+//        tableView.addSubview(anime)
+//
+//        UIView.animate(withDuration: 0.5, delay: 0, options: .curveEaseInOut, animations: {
+//            anime.frame = CGRect(x: 0, y: 0, width: self.tableView.frame.width, height: self.tableView.frame.height)
+//            anime.layer.cornerRadius = 20
+//            avatar.frame = CGRect(x: 0, y: 18, width: self.tableView.frame.width, height: self.tableView.frame.height-200)
+//            crossButton.frame = CGRect(x: 390, y: 15, width: 15, height: 15)
+//            self.tableView.layoutIfNeeded()
+//        })
+//
+//        print("AZAZA!!!")
+//        }
+    
+//    @objc func close() {
+//
+//
+//    }
            
     
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {

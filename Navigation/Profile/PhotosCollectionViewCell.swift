@@ -48,7 +48,3 @@ extension PhotosCollectionViewCell {
 
     }
 }
-
-extension UIView {
-    
-}

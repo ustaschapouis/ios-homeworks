@@ -9,6 +9,12 @@ import UIKit
 
 class PhotosTableViewCell: UITableViewCell {
     
+    let photosView: UIView = {
+        let photos = UIView()
+        photos.translatesAutoresizingMaskIntoConstraints = false
+        return photos
+    }()
+    
     let feedPhoto1: UIImageView = {
         let photo1 = UIImageView()
         photo1.layer.cornerRadius = 6
@@ -69,53 +75,59 @@ class PhotosTableViewCell: UITableViewCell {
     }
 
     func setupCellView() {
+        contentView.addSubview(photosView)
         
-        contentView.addSubview(feedPhoto1)
-        contentView.addSubview(feedTitle)
-        contentView.addSubview(feedPhoto2)
-        contentView.addSubview(feedPhoto3)
-        contentView.addSubview(feedPhoto4)
-        contentView.addSubview(arrowIcon)
+        photosView.addSubview(feedPhoto1)
+        photosView.addSubview(feedTitle)
+        photosView.addSubview(feedPhoto2)
+        photosView.addSubview(feedPhoto3)
+        photosView.addSubview(feedPhoto4)
+        photosView.addSubview(arrowIcon)
 
 }
 
     func setupConstraints() {
         NSLayoutConstraint.activate([
+            
+            photosView.topAnchor.constraint(equalTo: contentView.topAnchor),
+            photosView.bottomAnchor.constraint(equalTo: contentView.bottomAnchor),
+            photosView.leftAnchor.constraint(equalTo: contentView.leftAnchor),
+            photosView.rightAnchor.constraint(equalTo: contentView.rightAnchor),
+            
             feedPhoto1.topAnchor.constraint(equalTo: feedTitle.bottomAnchor, constant: 12),
-            feedPhoto1.widthAnchor.constraint(equalTo: contentView.widthAnchor, multiplier: 1/4, constant: -12),
-            feedPhoto1.heightAnchor.constraint(equalTo: contentView.widthAnchor, multiplier: 1/4, constant: -12),
-            feedPhoto1.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -12),
-            feedPhoto1.leftAnchor.constraint(equalTo: contentView.leftAnchor, constant: 12),
-            
+            feedPhoto1.widthAnchor.constraint(equalTo: photosView.widthAnchor, multiplier: 1/5, constant: 6),
+            feedPhoto1.heightAnchor.constraint(equalToConstant: 100),
+            feedPhoto1.bottomAnchor.constraint(equalTo: photosView.bottomAnchor, constant: -12),
+            feedPhoto1.leftAnchor.constraint(equalTo: photosView.leftAnchor, constant: 12),
+           
             feedPhoto2.leftAnchor.constraint(equalTo: feedPhoto1.rightAnchor, constant: 8),
-            feedPhoto2.widthAnchor.constraint(equalTo: contentView.widthAnchor, multiplier: 1/4, constant: -12),
-            feedPhoto2.heightAnchor.constraint(equalTo: contentView.widthAnchor, multiplier: 1/4, constant: -12),
-            feedPhoto2.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -12),
-            
+            feedPhoto2.widthAnchor.constraint(equalTo: photosView.widthAnchor, multiplier: 1/5, constant: 6),
+            feedPhoto2.heightAnchor.constraint(equalToConstant: 100),
+            feedPhoto2.bottomAnchor.constraint(equalTo: photosView.bottomAnchor, constant: -12),
+
             feedPhoto3.leftAnchor.constraint(equalTo: feedPhoto2.rightAnchor, constant: 12),
-            feedPhoto3.widthAnchor.constraint(equalTo: contentView.widthAnchor, multiplier: 1/4, constant: -12),
-            feedPhoto3.heightAnchor.constraint(equalTo: contentView.widthAnchor, multiplier: 1/4, constant: -12),
-            feedPhoto3.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -12),
-            
+            feedPhoto3.widthAnchor.constraint(equalTo: photosView.widthAnchor, multiplier: 1/5, constant: 6),
+            feedPhoto3.heightAnchor.constraint(equalToConstant: 100),
+            feedPhoto3.bottomAnchor.constraint(equalTo: photosView.bottomAnchor, constant: -12),
+
             feedPhoto4.leftAnchor.constraint(equalTo: feedPhoto3.rightAnchor, constant: 12),
-            feedPhoto4.widthAnchor.constraint(equalTo: contentView.widthAnchor, multiplier: 1/4, constant: -12),
-            feedPhoto4.heightAnchor.constraint(equalTo: contentView.widthAnchor, multiplier: 1/4, constant: -12),
-            feedPhoto4.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -12),
-            
-            feedTitle.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 12),
-            feedTitle.leftAnchor.constraint(equalTo: contentView.leftAnchor, constant: 12),
-            feedTitle.bottomAnchor.constraint(equalTo: feedPhoto1.topAnchor, constant: -12),
-            
-            arrowIcon.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 12),
-            arrowIcon.rightAnchor.constraint(equalTo: contentView.rightAnchor, constant: -12),
-            arrowIcon.bottomAnchor.constraint(equalTo: feedPhoto4.topAnchor, constant: -12),
-            arrowIcon.centerYAnchor.constraint(equalTo: feedTitle.centerYAnchor),
+            feedPhoto4.widthAnchor.constraint(equalTo: photosView.widthAnchor, multiplier: 1/5, constant: 6),
+            feedPhoto4.heightAnchor.constraint(equalToConstant: 100),
+            feedPhoto4.bottomAnchor.constraint(equalTo: photosView.bottomAnchor, constant: -12),
+
+            feedTitle.topAnchor.constraint(equalTo: photosView.topAnchor, constant: 12),
+            feedTitle.leftAnchor.constraint(equalTo: photosView.leftAnchor, constant: 12),
+
+            arrowIcon.topAnchor.constraint(equalTo: photosView.topAnchor, constant: 12),
+            arrowIcon.rightAnchor.constraint(equalTo: photosView.rightAnchor, constant: -12),
+//            arrowIcon.bottomAnchor.constraint(equalTo: feedPhoto4.topAnchor, constant: -12),
+//            arrowIcon.centerYAnchor.constraint(equalTo: feedTitle.centerYAnchor),
             arrowIcon.heightAnchor.constraint(equalToConstant: 36),
             arrowIcon.widthAnchor.constraint(equalToConstant: 36),
             
     ])
 
     }
-    
-    
+
+
 }

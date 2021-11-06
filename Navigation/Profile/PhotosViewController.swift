@@ -25,8 +25,9 @@ class PhotosViewController: UIViewController, UICollectionViewDelegate {
         view.addSubview(collectionView)
         collectionView.reloadData()
         navigationController?.setNavigationBarHidden(false, animated: true)
-        navigationController?.navigationBar.isTranslucent = false
+//        navigationController?.navigationBar.isTranslucent = false
         navigationItem.title = "Photo Gallery"
+        navigationController?.navigationBar.backgroundColor = .white
 
     }
     

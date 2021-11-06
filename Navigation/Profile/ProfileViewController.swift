@@ -108,10 +108,10 @@ extension ProfileViewController: UITableViewDelegate, UITableViewDataSource {
         setupAvatarImageView()
         
         
-        var heightAvatar: CGFloat = 0
-        if avatarImageView != nil {
-            heightAvatar = avatarImageView!.bounds.size.height / avatarImageView!.bounds.size.width
-        }
+//        var heightAvatar: CGFloat = 0
+//        if avatarImageView != nil {
+//            heightAvatar = avatarImageView!.bounds.size.height / avatarImageView!.bounds.size.width
+//        }
        
   
         func setupBackgroundView() {

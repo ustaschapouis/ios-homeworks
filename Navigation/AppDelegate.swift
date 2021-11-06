@@ -33,6 +33,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         tabBarController.viewControllers = [feedNavVC, profileNavVC]
         
         window?.rootViewController = tabBarController
+        tabBarController.tabBar.backgroundColor = .white
         
         return true
     }
